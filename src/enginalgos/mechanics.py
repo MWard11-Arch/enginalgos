@@ -24,3 +24,17 @@ def get_strain(stress: float, youngs_modulus: float):
         youngs_modulus: Young's Modulus in Pa
     """
     return stress / youngs_modulus
+
+
+def format_stress(stress_pa: float) -> str:
+    """
+    Converts Stress in Pa to a readable string with units (Pa, kPa, MPa).
+    """
+    if stress_pa >= 1e6:
+        # Convert to MPa
+        return f"{stress_pa / 1e6:.2f} MPa"
+    elif stress_pa >= 1e3:
+        # Convert to kPa
+        return f"{stress_pa / 1e3:.2f} kPa"
+    else:
+        return f"{stress_pa:.2f} Pa"
